@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../config/axiosAuth.js";
 import { baseURL } from "../config/api.js";
 import { createContext, useContext, useEffect, useState } from "react";
 
@@ -9,12 +9,24 @@ export const useUserContext = () => useContext(UserContext);
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
-
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    if (user) {
-      setUser(JSON.parse(user));
-    }
+    const token = localStorage.getItem("token");
+    // if (user) {
+    //   setUser(JSON.parse(user));
+    // }
+    const fetchUser = async () => {
+      if (token) {
+        try {
+          const response = await axios.get(baseURL + "/user/loggeduser");
+          setUser(response.data);
+          console.log("=====>",response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+
+    fetchUser();
   }, []);
 
   const handleRegister = async (e) => {
@@ -45,8 +57,9 @@ const UserProvider = ({ children }) => {
 
     try {
       const { data: user } = await axios.post(baseURL + "/user/signin", body);
+      console.log("=====>", user);
       localStorage.setItem("user", JSON.stringify(user));
-
+      localStorage.setItem("token", user.token);
       e.target.reset();
       window.location.replace("/");
     } catch (error) {

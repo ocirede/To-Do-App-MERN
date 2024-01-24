@@ -10,8 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use("/todo", router)
-app.use("/user", userRouter)
+app.use("/todo", router);
+app.use("/user", userRouter);
 
 app.listen(port, () => {
   console.log(`The server 🙈 is listening on port ${port}`);
