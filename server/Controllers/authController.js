@@ -14,12 +14,13 @@ export const handleRegister = async (req, res) => {
 
 export const handleSignIn = async (req, res) => {
   try {
-    const { name, password } = req.body;
-    const findUser = await User.findOne({ name });
+    const { name, password, email } = req.body;
+    const findUser = await User.findOne({ email});
     if (!findUser) return res.status(404).send("User not found");
     if (findUser.password !== password)
       return res.status(400).send("Wrong username or password");
     res.json(findUser);
+    console.log(findUser)
   } catch (error) {
     console.log("🚀 ~ error in sigIn:", error.message);
 

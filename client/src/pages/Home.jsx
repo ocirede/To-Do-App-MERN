@@ -4,18 +4,13 @@ import { useTaskContext } from "../context/TaskContext";
 export default function Home() {
   const { tasks } = useTaskContext();
   return (
-    <div className=" m-44 flex  gap-6  w-full h-full">
-      <ul className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 ">
+    <div className="w-full h-full mt-12 flex flex-col ">
+      <label className="flex flex-col items-center">
+        <input className=" w-1/2  h-10 border" placeholder="search tasks" type="text" />
+      </label>
+      <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10  m-10">
         {tasks?.map((task) => (
-          <Task
-            key={task._id}
-            taskId={task._id}
-            title={task.title}
-            content={task.content}
-            completed={task.completed}
-            priority={task.priority}
-            creator={task.creator}
-          />
+          <Task key={task._id} task={task} />
         ))}
       </ul>
     </div>

@@ -16,3 +16,9 @@ body {
   width: 100%;
  height: 100vh;
 }
+
+
+.disabled{
+  color: gray;
+  cursor: not-allowed;
+}

@@ -1,6 +1,7 @@
 import Todo from "../models/toDoModel.js";
 
 export const createTask = async (req, res) => {
+  console.log(req.body)
   try {
     const newTask = new Todo(req.body);
     await newTask.save();
