@@ -8,7 +8,6 @@ export const useUserContext = () => useContext(UserContext);
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     const token = localStorage.getItem("token");
     // if (user) {
@@ -57,8 +56,7 @@ const UserProvider = ({ children }) => {
 
     try {
       const { data: user } = await axios.post(baseURL + "/user/signin", body);
-      console.log("=====>", user);
-      localStorage.setItem("user", JSON.stringify(user));
+      // localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", user.token);
       e.target.reset();
       window.location.replace("/");
@@ -68,7 +66,7 @@ const UserProvider = ({ children }) => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUser(null);
     console.log(user);
   };

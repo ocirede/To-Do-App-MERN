@@ -4,7 +4,6 @@ import { useUserContext } from "../context/UserContext";
 
 export default function NavBar() {
   const { user, handleLogout } = useUserContext();
-console.log(user)
   return (
     <>
       <nav className="w-full h-16 flex justify-center items-center">

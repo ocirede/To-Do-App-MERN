@@ -25,6 +25,7 @@ export const getAllTasks = async (req, res) => {
 };
 
 export const updateTask = async (req, res) => {
+  console.log(req.params, req.body)
   
   try {
    

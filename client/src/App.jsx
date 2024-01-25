@@ -6,13 +6,11 @@ import SignUp from "./pages/SignUp";
 import WriteTask from "./pages/WriteTask";
 import SignIn from "./pages/SignIn";
 import TaskProvider from "./context/TaskContext";
-import UserProvider from "./context/UserContext";
 
 function App() {
   return (
     <>
       <NavBar />
-
       <TaskProvider>
         <Routes>
           <Route path="/" element={<Home />} />

@@ -10,8 +10,8 @@ export const useTaskContext = () => useContext(TaskContext);
 
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-  
-  const {user} = useUserContext()
+
+  const { user } = useUserContext();
 
   const navigate = useNavigate();
 
@@ -22,9 +22,9 @@ const TaskProvider = ({ children }) => {
       title: e.target.title.value,
       content: e.target.task.value,
       priority: e.target.priority.value,
-      creator: user._id
+      creator: user._id,
     };
-console.log(body)
+    console.log(body);
     try {
       const { data: newTask } = await axios.post(baseURL + "/todo/add", body);
       setTasks([...tasks, newTask]);
@@ -40,7 +40,7 @@ console.log(body)
 
   const getTasks = async () => {
     try {
-      const task = await axios.get(`http://localhost:3000/todo/get`);
+      const task = await axios.get(baseURL + `/todo/get`);
       setTasks(task.data);
     } catch (err) {
       console.log(err);
@@ -49,17 +49,7 @@ console.log(body)
 
   useEffect(() => {
     getTasks();
-
   }, [tasks]);
-
-  const updateTask = async (taskId, updateData) =>{
-try {
-  const {data} = await axios.put(baseURL + "/todo/update/" + `${taskId}`, updateData);
-  setTasks(data)
-} catch (err) {
-  console.log(err);
-}
-  }
 
   const handleDelete = async (taskId) => {
     try {
@@ -73,7 +63,7 @@ try {
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, createTask, handleDelete, updateTask }}>
+    <TaskContext.Provider value={{ tasks, createTask, handleDelete }}>
       {children}
     </TaskContext.Provider>
   );

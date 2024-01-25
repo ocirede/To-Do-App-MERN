@@ -13,7 +13,7 @@ export default function SignIn() {
           <input
             type="email"
             name="email"
-            placeholder="email"
+            placeholder="Email"
             className="border p-2 rounded"
             required
           />
