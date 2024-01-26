@@ -10,7 +10,6 @@ export const useTaskContext = () => useContext(TaskContext);
 
 const TaskProvider = ({ children }) => {
   const [tasks, setTasks] = useState([]);
-
   const { user } = useUserContext();
 
   const navigate = useNavigate();
@@ -20,7 +19,7 @@ const TaskProvider = ({ children }) => {
     console.log("Form submitted!");
     const body = {
       title: e.target.title.value,
-      content: e.target.task.value,
+      content: e.target.content.value,
       priority: e.target.priority.value,
       creator: user._id,
     };
@@ -63,7 +62,14 @@ const TaskProvider = ({ children }) => {
   };
 
   return (
-    <TaskContext.Provider value={{ tasks, createTask, handleDelete }}>
+    <TaskContext.Provider
+      value={{
+        tasks,
+        createTask,
+        handleDelete,
+        
+      }}
+    >
       {children}
     </TaskContext.Provider>
   );

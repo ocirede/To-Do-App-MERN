@@ -7,7 +7,7 @@ export default function NavBar() {
   return (
     <>
       <nav className="w-full h-16 flex justify-center items-center">
-        <ul className="flex justify-between items-center gap-4 md:gap-8 lg:gap-12">
+        <ul className="  w-full flex justify-center items-center md:gap-4 lg:gap-16">
           {user ? (
             <>
               <Link to="/">
@@ -27,7 +27,7 @@ export default function NavBar() {
               </Link>
             </>
           ) : (
-            <div className="hidden md:flex gap-8">
+            <div className="hidden md:flex gap-16 w-full lg:flex justify-end mr-10  ">
               <Link to="/signin">Sign-In</Link>
               <Link to="/signup">Sign-Up</Link>
             </div>

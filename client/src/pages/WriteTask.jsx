@@ -2,7 +2,7 @@ import { useTaskContext } from "../context/TaskContext";
 
 const WriteTask = () => {
   const { createTask } = useTaskContext();
-
+  const maxLength = 50
   return (
     <div className="bg-teal-300 h-full flex flex-col justify-center items-center p-6">
       <h1 className="text-4xl mb-4">Add a Task</h1>
@@ -18,7 +18,7 @@ const WriteTask = () => {
 
         <label className="flex flex-col gap-2 w-full">
           Task content:
-          <input className="border p-2 rounded w-full" type="text" name="task" />
+          <input className="border p-2 rounded w-full" type="text" name="content" maxLength={maxLength} />
         </label>
 
         <label className="flex items-center gap-2 w-full">

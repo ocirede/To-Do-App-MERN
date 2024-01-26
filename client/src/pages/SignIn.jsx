@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { useUserContext } from "../context/UserContext";
 
 export default function SignIn() {
-  const {handleSignin} = useUserContext()
+  const {handleSignin, loading} = useUserContext()
   return (
-    <div className=" h-full flex flex-col justify-center items-center p-6">
+    <div className=" h-full flex flex-col justify-center items-center p-6 bg-gray-100">
       <form onSubmit={handleSignin}className="bg-white w-1/2 max-w-md p-8 flex flex-col gap-4 border rounded-md">
         <h2 className="text-2xl mb-4">Sign in</h2>
 
@@ -31,8 +31,9 @@ export default function SignIn() {
 
         <button
           className="signUpBtn bg-teal-500 text-white px-4 py-2 rounded-md"
-          type="submit"
+          type="submit" disabled={loading}
         >
+           {loading ? 'Signing In...' : 'Sign In'}
           Sign-in
         </button>
       </form>
@@ -40,7 +41,7 @@ export default function SignIn() {
       <span className=" text-lg mt-6">
         Create your ToDoist{"  "}
         <Link className="text-blue-500  text-lg" to="/signup">
-          account
+          Account
         </Link>{" "}
       </span>
     </div>

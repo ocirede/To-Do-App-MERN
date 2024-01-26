@@ -8,6 +8,8 @@ export const useUserContext = () => useContext(UserContext);
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     // if (user) {
@@ -55,13 +57,20 @@ const UserProvider = ({ children }) => {
     };
 
     try {
+      setLoading(true)
+
+
       const { data: user } = await axios.post(baseURL + "/user/signin", body);
       // localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", user.token);
       e.target.reset();
+      
       window.location.replace("/");
     } catch (error) {
       console.log(error);
+    }
+    finally {
+      setLoading(false);
     }
   };
 
@@ -73,7 +82,7 @@ const UserProvider = ({ children }) => {
 
   return (
     <UserContext.Provider
-      value={{ user, handleRegister, handleSignin, handleLogout }}
+      value={{ user, handleRegister, handleSignin, handleLogout, loading }}
     >
       {children}
     </UserContext.Provider>

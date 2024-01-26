@@ -8,7 +8,7 @@ export default function SignUp() {
       <h1 className=" text-5xl mb-6"> Welcome to ToDoist</h1>
 
       <form onSubmit={handleRegister} className="w-full max-w-sm bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h2 className="text-2xl mb-6">Create Account</h2>
+        <h2 className="text-2xl mb-6">Create your Account</h2>
 
         <div className="mb-4">
           <label
@@ -69,7 +69,7 @@ export default function SignUp() {
       </form>
 
       <span className="text-gray-600">
-        Already have an account?{" "}
+        Already have an Account?{" "}
         <Link className="text-blue-500" to="/signin">
           Sign in
         </Link>

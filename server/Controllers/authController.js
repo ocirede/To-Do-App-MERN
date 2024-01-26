@@ -24,7 +24,7 @@ export const handleSignIn = async (req, res) => {
     if (!isMatched || !findUser)
       return res.status(400).send("Wrong username or password");
     const token =  jwt.sign({id: findUser._id}, process.env.JWT_SECRET_KEY, {expiresIn: "1d",});
-    res.json({findUser, token});
+    res.json({token});
   } catch (error) {
     console.log("🚀 ~ error in sigIn:", error.message);
 

@@ -81,12 +81,12 @@ const Task = ({ task }) => {
             </form>
           </li>
         ) : (
-          <li className="flex flex-col gap-4 border p-4 md:w-64 md:h-64 lg:w-72 lg:h-72 m-8">
+          <li className="flex flex-col gap-4 border border-black p-4 md:w-64 md:h-72 lg:w-72 lg:h-72 m-8">
             <h2 className="text-xl font-semibold mb-2">{task.title}</h2>
-            <p className="text-gray-700 mb-4">{task.content}</p>
+            <p className="text-gray-700 mb-4 text-xl">{task.content}</p>
 
             <div
-              className={`text-sm text-gray-600 mt-2 ${
+              className={`text-base text-gray-600 mt-2 ${
                 task.priority === "Low"
                   ? "text-green-500"
                   : task.priority === "Medium"
@@ -120,8 +120,9 @@ const Task = ({ task }) => {
               />
             </div>
 
-            <div className="text-sm text-gray-600 mt-2">
-              Creator: {task.creator.name}
+            <div className=" text-base text-gray-600 mt-2 flex flex-col gap-2">
+              <p>Creator: {task.creator.name}</p>
+
             </div>
           </li>
         )
